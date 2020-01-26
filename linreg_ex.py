@@ -8,7 +8,7 @@ X = data[:,0:-1]
 y = data[:,-1]
 y = y.reshape(y.shape[0], 1)
 
-lr = LinearRegression(X, y, normalize=False)
+lr = LinearRegression(X, y, normalize=True)
 #lr.fit()
 
 #print(lr.score(X, y))

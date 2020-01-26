@@ -1,15 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from MSE import MSE
 
-class LinearRegression:
+class LogisticRegression:
     def __init__(self, X, y, theta=None, normalize=True):
         self.y = y
-        self.normalized = False
 
         if normalize:
             X = self.normalize(X)
-            self.normalized = True
         self.X = self.insert_ones_column(X)
 
         if not theta:
@@ -25,10 +22,7 @@ class LinearRegression:
         return (X - np.mean(X)) / np.std(X)
 
     def fit(self):
-        if self.X.shape[1] > 10_000:
-            self.SGD()
-        else:
-            self.normalEq()
+        pass
 
     def predict(self, X):
         X = self.insert_ones_column(X)
@@ -43,12 +37,10 @@ class LinearRegression:
         X = self.insert_ones_column(X)
         return MSE(self.theta, X, y)
 
-    def score(self, X, y):
-        #TODO fix this
-        X = self.insert_ones_column(X)
-        mse = MSE(self.theta, X, y)
-        tss = np.sum(X.dot(self.theta)**2)
-        return (tss - mse) / tss
+    def confusion_matrix(self):
+        #add a self.accuracy?
+        pass
+
 
     def plot(self):
         if not self.X.shape[0] > 2:
@@ -99,4 +91,3 @@ class LinearRegression:
         Stops once cost within threshold defined by self.accuracy
         """
         pass
-
