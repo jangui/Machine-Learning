@@ -1,2 +1,2 @@
-# Machine-Learning
-A repo with different ML algorithms
+# Nerva
+A machine learning library
